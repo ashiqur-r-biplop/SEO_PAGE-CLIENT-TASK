@@ -2,11 +2,13 @@
 /* eslint-disable no-prototype-builtins */
 
 import { HiLink } from "react-icons/hi";
-const Modal = ({ setFile, msg, handleUploadFiles, handleOpenModal, card }) => {
+import StrodeId from "../hook/StrodeId";
+const Modal = ({ setFile, msg, handleUploadFiles, card }) => {
+  const { setId } = StrodeId();
   return (
     <div>
       <label
-        onClick={() => handleOpenModal(card?.client_id)}
+        onClick={() => setId(card?.client_id)}
         htmlFor="my_modal_6"
         className="cursor-pointer"
       >
@@ -28,13 +30,13 @@ const Modal = ({ setFile, msg, handleUploadFiles, handleOpenModal, card }) => {
                   setFile(e.target.files);
                 }}
                 multiple
-                id=""
+                id="Files"
               />
               {msg && <span>{msg}</span>}
             </div>
             <div className="modal-action m-0">
               <label
-                onClick={() => handleUploadFiles()}
+                onClick={() => handleUploadFiles(card)}
                 className="btn btn-success"
               >
                 Upload

@@ -6,7 +6,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import moment from "moment/moment";
 import Modal from "./Modal";
 
-const SingleCard = ({handleOpenModal, files,setFile, setMsg, msg, card, handleUploadFiles }) => {
+const SingleCard = ({ files,setFile, setMsg, msg, card, handleUploadFiles }) => {
   const date = card?.["publish-date"];
   const momentData = moment(date).format("D-MM-YYYY");
   const SingleCard= card?.client_id
@@ -51,7 +51,7 @@ const SingleCard = ({handleOpenModal, files,setFile, setMsg, msg, card, handleUp
           </div>
           <div className="d-flex-two">
             <span>
-              <Modal handleOpenModal={handleOpenModal} card={card}  msg={msg} setMsg={setMsg} setFile={setFile} files={files} handleUploadFiles={handleUploadFiles} SingleCard={SingleCard}></Modal>
+              <Modal  card={card}  msg={msg} setMsg={setMsg} setFile={setFile} files={files} handleUploadFiles={handleUploadFiles} SingleCard={SingleCard}></Modal>
             </span>
 
             <p>{card?.["uploads-file"]?.length}</p>

@@ -4,13 +4,15 @@
 import SingleCard from "./SingleCard";
 import axios from "axios";
 import { useState } from "react";
+import StrodeId from "../hook/StrodeId";
 const Cards = ({ children }) => {
   const [files, setFile] = useState(null);
   const [msg, setMsg] = useState(null);
+  const { id } = StrodeId();
   let resultArray = [];
-  const [obj, setObj] = useState({});
-  const [objId, setObjId] = useState(0);
   const handleUploadFiles = () => {
+    const singleCard = children.find((cart) => cart?.client_id == id);
+    console.log(id);
     if (!files) {
       setMsg("No File Selected");
       return;
@@ -21,7 +23,6 @@ const Cards = ({ children }) => {
     }
 
     setMsg("Uploading....");
-
     axios
       .post("http://httpbin.org/post", fd, {
         headers: {
@@ -30,6 +31,7 @@ const Cards = ({ children }) => {
       })
       .then((res) => {
         const input = res.data.files;
+
         for (const key in input) {
           if (input.hasOwnProperty(key)) {
             const fileObject = {
@@ -39,35 +41,37 @@ const Cards = ({ children }) => {
             resultArray.push(fileObject);
           }
         }
+        console.log(resultArray);
+        const newObj = {
+          ...singleCard,
+          ...singleCard?.["uploads-file"].push(resultArray),
+        };
+        console.log(newObj);
         if (input) {
-          fetch(`https://seo-page-1-server-site-ashiqur23.vercel.app/uploadFiles/${objId}`, {
+          fetch(`https://seo-page-1-server-site-ashiqur23.vercel.app/uploadFiles/${id}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
             },
-            body: JSON.stringify({ resultArray }),
+            body: JSON.stringify({ newObj }),
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              document.getElementById("Files").value = "";
+              setMsg("Upload successfully");
             })
             .catch((err) => {
               console.log(err);
             });
         }
-        console.log(obj?.client_id);
-        setMsg("Upload successfully");
       })
       .catch((err) => {
+        document.getElementById("Files").value = "";
         setMsg("Upload failed");
         console.log(err);
       });
   };
-  const handleOpenModal = (id) => {
-    const singleCard = children.find((cart) => cart?.client_id == id);
-    setObj(singleCard);
-    setObjId(id)
-  };
+
   return (
     <div>
       {children.map((card, i) => (
@@ -77,7 +81,6 @@ const Cards = ({ children }) => {
           setFile={setFile}
           files={files}
           handleUploadFiles={handleUploadFiles}
-          handleOpenModal={handleOpenModal}
           key={i}
           card={card}
         ></SingleCard>
