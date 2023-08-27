@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 20;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: auto;
+}
+
+.column-body-custom {
+  background-color: #F2F4F7;
+  position: relative;
+  top: 20px;
+  width: 460px;
+}
+.parent-singe-column {
+  overflow-y: scroll;
+  height: 95vh;
+}
+
+.card {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.d-flex-two {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0px 5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+}
+
+.custom-bg-gray {
+  background-color: #E8EEF3;
+  padding: 4px;
+  border-radius: 50%;
+}
+
+h2 {
+  font-size: 15px;
+  margin-left: 10px;
+}
+
+.column-title-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0px 20px;
+  margin: 0 auto;
+}
+
+.left-column-title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.right-column-title {
+  background-color: #E8EEF3;
+  padding: 5px;
+}
+
+.left-column-title-color-red {
+  background-color: #D21010;
+  width: 10px;
+  height: 10px;
+  padding: 20px;
+  border-radius: 50% 0% 0% 50%;
+}
+
+.left-column-title-color-sky {
+  background-color: #00B5FF;
+  width: 40px;
+  height: 40px;
+  border-radius: 50% 0% 0% 50%;
+}
+
+.left-column-title-color-yellow {
+  background-color: #FFE700;
+  width: 40px;
+  height: 40px;
+  border-radius: 50% 0% 0% 50%;
+}
+
+h4 {
+  padding-left: 10px;
+}
+
+.half-in-card {
+  background-color: #D8D8D9;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+p {
+  margin: 0px;
+  padding-left: 5px;
+}
+
+
+
+/* modal */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(196, 196, 196, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: rgb(54, 54, 54);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(194, 194, 194, 0.1);
+}
+
+.close-button {
+  /* background: none;
+  border: none; */
+  font-size: 18px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+
+
+
+
+/* scroll bar */
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E4E4E4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #006EB8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b6b6b6;
+}
