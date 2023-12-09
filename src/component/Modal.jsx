@@ -1,20 +1,15 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-prototype-builtins */
 
-import { HiLink } from "react-icons/hi";
-import StrodeId from "../hook/StrodeId";
-const Modal = ({ setFile, msg, handleUploadFiles, card }) => {
-  const { setId } = StrodeId();
+import { useEffect } from "react";
+
+/* eslint-disable no-prototype-builtins */
+const Modal = ({ setFile, msg, handleUploadFiles, modalCard }) => {
+  console.log(modalCard);
+  useEffect(() => {
+    
+  }, [modalCard]);
   return (
     <div>
-      <label
-        onClick={() => setId(card?.client_id)}
-        htmlFor="my_modal_6"
-        className="cursor-pointer"
-      >
-        <HiLink></HiLink>
-      </label>
-
       <input type="checkbox" id="my_modal_6" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
@@ -23,6 +18,7 @@ const Modal = ({ setFile, msg, handleUploadFiles, card }) => {
             className="p-9 items-center w-full flex justify-center "
           >
             <div>
+              {<h2>{modalCard?.client_id}</h2>}
               <input
                 type="file"
                 name=""
@@ -36,7 +32,7 @@ const Modal = ({ setFile, msg, handleUploadFiles, card }) => {
             </div>
             <div className="modal-action m-0">
               <label
-                onClick={() => handleUploadFiles(card)}
+                onClick={() => handleUploadFiles(modalCard)}
                 className="btn btn-success"
               >
                 Upload

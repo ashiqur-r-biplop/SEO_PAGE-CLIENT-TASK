@@ -5,11 +5,14 @@ import { FaRegComments } from "react-icons/fa";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import moment from "moment/moment";
 import Modal from "./Modal";
+import { HiLink } from "react-icons/hi";
+import { useState } from "react";
 
-const SingleCard = ({ files,setFile, setMsg, msg, card, handleUploadFiles }) => {
+const SingleCard = ({ setFile, msg, card, handleUploadFiles }) => {
+  const [modalCard, setModalCard] = useState({});
   const date = card?.["publish-date"];
   const momentData = moment(date).format("D-MM-YYYY");
-  const SingleCard= card?.client_id
+  const SingleCard = card?.client_id;
   return (
     <div>
       <div className="card">
@@ -51,7 +54,20 @@ const SingleCard = ({ files,setFile, setMsg, msg, card, handleUploadFiles }) => 
           </div>
           <div className="d-flex-two">
             <span>
-              <Modal  card={card}  msg={msg} setMsg={setMsg} setFile={setFile} files={files} handleUploadFiles={handleUploadFiles} SingleCard={SingleCard}></Modal>
+              <label
+                onClick={() => setModalCard(card)}
+                htmlFor="my_modal_6"
+                className="cursor-pointer"
+              >
+                <HiLink></HiLink>
+              </label>
+              <Modal
+                modalCard={modalCard}
+                msg={msg}
+                setFile={setFile}
+                handleUploadFiles={handleUploadFiles}
+                SingleCard={SingleCard}
+              ></Modal>
             </span>
 
             <p>{card?.["uploads-file"]?.length}</p>

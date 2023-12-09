@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const StrodeId = (idStore) => {
-  console.log(idStore);
   const [id, setId] = useState(0);
-  useState(() => {
+
+  useEffect(() => {
     setId(idStore);
   }, [idStore]);
   return { id, setId };
